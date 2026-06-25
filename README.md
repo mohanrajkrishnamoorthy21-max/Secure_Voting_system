@@ -52,7 +52,6 @@ A cutting-edge, cryptographically secure voting platform with immersive 3D visua
 | **Vite** | 8.0.4 | Lightning-fast build tool and dev server |
 | **React Router** | 7.14.0 | Client-side routing with nested routes |
 | **Lucide React** | 1.7.0 | Beautiful, consistent icon library |
-| **Canvas API** | Native | High-performance 2D/3D graphics rendering |
 | **CSS3 Transforms** | Native | Hardware-accelerated 3D effects |
 
 ### 🔧 Backend Technologies
@@ -64,7 +63,6 @@ A cutting-edge, cryptographically secure voting platform with immersive 3D visua
 | **Python** | 3.8+ | Backend runtime environment |
 
 ### 🎯 Key Libraries & Tools
-- **Canvas API**: For particle systems and 3D rendering
 - **CSS3 Transforms**: For perspective and depth effects
 - **React Hooks**: For state management and side effects
 - **Django ORM**: For database operations
@@ -132,41 +130,6 @@ npm run dev
 - **🔧 Backend API**: http://localhost:8000
 - **📚 API Endpoints**: http://localhost:8000/api/
 
-> **💡 Tip**: The frontend will automatically try the next available port if 5173 is in use.
-
-## 📁 Project Structure
-
-```
-SYM/
-├── backend/
-│   ├── backend_project/    # Django settings and configuration
-│   ├── voting/             # Django app for voting logic
-│   ├── manage.py           # Django management script
-│   ├── db.sqlite3          # SQLite database
-│   └── venv/               # Python virtual environment
-├── frontend/
-│   ├── public/             # Static assets
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   │   ├── Background3D.jsx      # 3D particle background
-│   │   │   ├── Auth3DScene.jsx       # 3D auth page effects
-│   │   │   ├── BallotBox3D.jsx       # 3D voting modal
-│   │   │   ├── CryptoGlobe3D.jsx     # Interactive 3D globe
-│   │   │   ├── Sidebar.jsx           # Navigation sidebar
-│   │   │   └── Navbar.jsx            # Navigation bar
-│   │   ├── pages/          # Page components
-│   │   │   ├── Dashboard.jsx         # Main voting dashboard
-│   │   │   ├── Login.jsx             # Login page
-│   │   │   ├── Register.jsx          # Registration page
-│   │   │   ├── Results.jsx           # Results with 3D visualization
-│   │   │   └── Settings.jsx          # User settings with 3D shield
-│   │   ├── App.jsx          # Main app component
-│   │   ├── index.css       # Global styles with 3D effects
-│   │   └── main.jsx        # React entry point
-│   ├── package.json
-│   └── vite.config.js
-└── README.md
-```
 
 ## 🎨 3D Components Overview
 
@@ -219,95 +182,6 @@ SECRET_KEY=your-secret-key-here
 DATABASE_URL=sqlite:///db.sqlite3
 ALLOWED_HOSTS=localhost,127.0.0.1
 CORS_ALLOWED_ORIGINS=http://localhost:5173
-```
-
-### API Endpoints
-
-| Method | Endpoint | Description | Authentication |
-|--------|----------|-------------|----------------|
-| `POST` | `/api/auth/login/` | User authentication | Public |
-| `POST` | `/api/auth/register/` | User registration | Public |
-| `GET` | `/api/elections/` | List all elections | Public |
-| `POST` | `/api/votes/` | Cast a vote | Required |
-| `GET` | `/api/votes/` | Get user's votes | Required |
-| `GET` | `/api/elections/{id}/results/` | Get election results | Public |
-
-### Database Schema
-
-**User Model**
-- `id`: Primary key
-- `username`: Unique identifier
-- `email`: Email address
-- `password_hash`: Encrypted password
-
-**VoterProfile Model**
-- `user`: One-to-one relation with User
-- `city`: User's city
-- `state`: User's state/region
-- `timezone`: User's timezone
-
-**Election Model**
-- `id`: Primary key
-- `name`: Election name
-- `description`: Election description
-- `start_time`: Election start datetime
-- `end_time`: Election end datetime
-
-**Candidate Model**
-- `id`: Primary key
-- `name`: Candidate name
-- `description`: Candidate description
-- `election`: Foreign key to Election
-
-**Vote Model**
-- `id`: Primary key
-- `voter`: Foreign key to User
-- `election`: Foreign key to Election
-- `candidate`: Foreign key to Candidate
-- `timestamp`: Vote timestamp
-
-## 🎯 Usage Guide
-
-### 🗳️ Voting Process
-1. **Register/Login**: Create a secure account or authenticate with existing credentials
-2. **Dashboard**: Navigate to the Dashboard to view active elections
-3. **Select Candidate**: Choose from 3D candidate cards with tilt effects
-4. **Cast Ballot**: Click "Cast Certified Ballot" to open the 3D voting modal
-5. **Watch Animation**: Experience the animated ballot drop into the cryptographic vault
-6. **Verify Receipt**: Receive a transaction hash for verification
-
-### 📊 Viewing Results
-1. **Results Page**: Navigate to the Results section
-2. **Toggle Views**: Switch between 2D Classic and 3D Hologram modes
-3. **Interact**: Move cursor over the 3D grid to rotate the perspective
-4. **Audit Trail**: Review the cryptographic audit trail for verification
-
-### ⚙️ Managing Settings
-1. **Profile**: View and manage your digital identity
-2. **Security**: Rotate your master key for enhanced protection
-3. **Notifications**: Toggle network alerts for new elections
-4. **3D Shield**: Interact with the security shield for visual feedback
-
-## 📸 Screenshots
-
-### Authentication Pages
-- **Login**: 3D geometric shapes with mouse parallax effects
-- **Register**: Enhanced visual feedback during registration
-
-### Dashboard
-- **Hero Section**: Interactive 3D globe with drag-to-rotate
-- **Election Cards**: 3D tilt effects with glowing borders
-- **Live Feed**: Real-time cryptographic audit logs
-
-### Voting Experience
-- **3D Ballot Modal**: Animated vault with physics simulation
-- **Spark Effects**: Particle explosion on vote submission
-- **Transaction Receipt**: Hash verification display
-
-### Results Visualization
-- **3D Hologram Mode**: Interactive columns with floating particles
-- **2D Classic Mode**: Traditional bar chart view
-- **Audit Timeline**: Immutable blockchain verification
 
 ## 🔒 Security Considerations
 
@@ -323,34 +197,8 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173
 - **Audit Trail**: Immutable cryptographic ledger with SHA-256 hash verification
 - **Consensus Mechanism**: Multi-party computation ensures vote integrity
 
-### Best Practices
-- Never commit sensitive data to version control
-- Use environment variables for configuration
-- Keep dependencies updated regularly
-- Implement rate limiting in production
-- Use HTTPS in production environments
 
-## 🐛 Troubleshooting
 
-### Frontend Issues
-
-| Problem | Solution |
-|---------|----------|
-| Port 5173 in use | Vite automatically tries the next available port (5174, 5175, etc.) |
-| Module not found | Run `npm install` to install dependencies |
-| Build errors | Clear cache: `rm -rf node_modules && npm install` |
-| Hot reload not working | Check if file watchers are limited (increase limit on macOS/Linux) |
-| 3D effects not rendering | Ensure browser supports Canvas API and CSS transforms |
-
-### Backend Issues
-
-| Problem | Solution |
-|---------|----------|
-| Migration errors | Run `python manage.py migrate` to update database schema |
-| Port 8000 in use | Change port: `python manage.py runserver 8001` |
-| Import errors | Ensure virtual environment is activated |
-| Database locked | Close any database connections and restart server |
-| CORS errors | Add frontend URL to `CORS_ALLOWED_ORIGINS` in settings |
 
 ### Common Issues
 
@@ -403,25 +251,6 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173
 | Globe Visualization | `CryptoGlobe3D.jsx` | Node count, beam speed |
 | CSS Transforms | `index.css` | Perspective values, animation curves |
 
-### Performance Optimization
-
-- **Reduce Particles**: Lower particle count for better performance
-- **Debounce Events**: Add debouncing to mouse move handlers
-- **Use requestAnimationFrame**: Ensure smooth animations
-- **Optimize Renders**: Use React.memo for expensive components
-- **Lazy Load**: Consider lazy loading 3D components
-
-### Code Style
-
-- Follow React best practices and hooks rules
-- Use functional components with hooks
-- Implement proper error boundaries
-- Add comments for complex 3D math operations
-- Use descriptive variable names for 3D coordinates
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
 
 ### Contribution Guidelines
 
@@ -455,86 +284,6 @@ We welcome contributions! Here's how you can help:
    - Describe your changes clearly
    - Reference related issues
    - Include screenshots for UI changes
-
-### Areas for Contribution
-
-- 🎨 **New 3D Effects**: Additional particle systems or animations
-- 🔧 **Performance**: Optimization of existing 3D components
-- � **Mobile**: Enhanced responsive design for mobile devices
-- 🌍 **Internationalization**: Multi-language support
-- ♿ **Accessibility**: Improved screen reader support
-- 🧪 **Testing**: Unit tests for components and API endpoints
-
-## 🗺️ Roadmap
-
-### Phase 1: Core Features ✅
-- [x] User authentication
-- [x] Election management
-- [x] Voting system
-- [x] Results visualization
-- [x] 3D visual effects
-
-### Phase 2: Enhancements 🚧
-- [ ] Mobile app version
-- [ ] Advanced analytics dashboard
-- [ ] Multi-language support
-- [ ] Email notifications
-- [ ] Admin panel
-
-### Phase 3: Advanced Features 📋
-- [ ] Blockchain integration
-- [ ] Biometric authentication
-- [ ] Real-time collaboration
-- [ ] Advanced audit tools
-- [ ] API rate limiting
-
-## ❓ FAQ
-
-### General Questions
-
-**Q: Is this production-ready?**
-A: The application is functional but requires additional security hardening, testing, and infrastructure setup for production use.
-
-**Q: Can I use this for real elections?**
-A: This is a demonstration project. For real elections, you would need additional security measures, legal compliance, and infrastructure.
-
-**Q: What browsers are supported?**
-A: Modern browsers that support Canvas API and CSS3 transforms (Chrome, Firefox, Safari, Edge).
-
-### Technical Questions
-
-**Q: How do I customize the 3D effects?**
-A: Modify the particle count, colors, and animation speeds in the respective component files.
-
-**Q: Can I disable 3D effects for performance?**
-A: Yes, you can reduce particle counts or add a toggle in settings to disable animations.
-
-**Q: How do I change the color scheme?**
-A: Update CSS variables in `index.css` under the `:root` selector.
-
-## �📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- **React Team** - For the amazing framework and continuous improvements
-- **Vite** - For the blazing-fast build tool and excellent DX
-- **Django** - For the robust and secure backend framework
-- **Lucide** - For the beautiful and consistent icon set
-- **Open Source Community** - For the countless libraries and tools used
-
-## 📞 Support & Community
-
-- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/SYM/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/SYM/discussions)
-- **Email**: support@example.com
-
-## 🌟 Star History
-
-If you find this project helpful, please consider giving it a ⭐ on GitHub!
-
----
 
 <div align="center">
 
